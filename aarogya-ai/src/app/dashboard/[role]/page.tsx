@@ -1,6 +1,6 @@
 import { getRoleConfig } from "@/lib/roles";
 import { redirect } from "next/navigation";
-import DashboardClient from "./DashboardClient";
+import DashboardClient from "@/components/dashboard/DashboardClient";
 
 // ── Supabase auth check (uncomment when .env.local is configured) ──
 // import { createClient } from "@/lib/supabase/server";

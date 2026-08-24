@@ -17,7 +17,7 @@ import {
   mentalSignUpSchema,
   doctorSignUpSchema,
   hospitalSignUpSchema,
-} from "@/lib/validations/auth";
+} from "@/lib/auth-schemas";
 import type { z } from "zod";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

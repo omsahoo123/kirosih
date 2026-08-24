@@ -1,29 +1,43 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #1A6B3C;
+  /* ── Colour tokens (AarogyaAI design system) ─────────────────────── */
+  --color-neel:        #1A6B3C;   /* Neel — dominant structural green   */
+  --color-neel-deep:   #0F4024;   /* Neel deep — for headlines          */
+  --color-neel-light:  #2E8B57;   /* Neel hover                         */
+  --color-haldi:       #F4A832;   /* Haldi — accent, CTA highlight      */
+  --color-haldi-wash:  #FFF8EE;   /* Haldi wash — card backgrounds      */
+  --color-teal:        #2EC4B6;   /* Teal — secondary accent            */
+  --color-background:  #F8FBF9;   /* Off-white background               */
+  --color-surface:     #FFFFFF;
+  --color-foreground:  #1A1A2E;   /* Near-black body text               */
+  --color-muted:       #6B7280;
+
+  /* ── Legacy aliases (used by other components) ──────────────────── */
+  --color-primary:       #1A6B3C;
   --color-primary-light: #2E8B57;
-  --color-secondary: #F4A832;
-  --color-accent: #2EC4B6;
-  --color-background: #F8FBF9;
-  --color-foreground: #1A1A2E;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-secondary:     #F4A832;
+  --color-accent:        #2EC4B6;
+
+  /* ── Typography ─────────────────────────────────────────────────── */
+  --font-sans:  var(--font-sans),  ui-sans-serif,  system-ui, sans-serif;
+  --font-serif: var(--font-serif), ui-serif, Georgia, serif;
 }
 
 @layer base {
-  * {
-    box-sizing: border-box;
-  }
-  html {
-    scroll-behavior: smooth;
-  }
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
   body {
     font-family: var(--font-sans);
     background-color: var(--color-background);
     color: var(--color-foreground);
     @apply antialiased;
   }
-  a {
-    text-decoration: none;
-  }
+
+  a { text-decoration: none; }
+
+  /* Spectral headline utility */
+  .font-serif { font-family: var(--font-serif); }
 }

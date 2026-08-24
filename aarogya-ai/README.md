@@ -90,19 +90,46 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 
 ```
 src/
-├── app/
-│   ├── page.tsx                  ← Landing page
-│   ├── auth/[role]/page.tsx      ← Dynamic auth (8 roles)
-│   └── dashboard/[role]/         ← Role dashboard
-├── components/
-│   ├── landing/                  ← Navbar, Hero, Roles, Features…
-│   └── auth/                     ← AuthLayout, SignInForm, SignUpForm
-├── lib/
-│   ├── roles.ts                  ← Role config (colors, features, routes)
-│   ├── dummy-users.ts            ← Test credentials & dummy data
-│   ├── validations/auth.ts       ← Zod schemas per role
-│   └── supabase/                 ← client.ts + server.ts
-└── types/index.ts
+│
+├── app/                          ← PAGES (Next.js routing)
+│   ├── page.tsx                  ← Home / Landing page
+│   ├── layout.tsx                ← Root HTML + font setup
+│   ├── globals.css               ← Global Tailwind styles
+│   ├── auth/[role]/page.tsx      ← Sign in/up (1 route handles all 8 roles)
+│   ├── dashboard/[role]/page.tsx ← Dashboard (1 route handles all 8 roles)
+│   └── api/auth/signout/         ← Sign out API route
+│
+├── components/                   ← UI PIECES (reusable building blocks)
+│   ├── landing/                  ← Sections on the home page
+│   │   ├── Navbar.tsx
+│   │   ├── Hero.tsx
+│   │   ├── RolesSection.tsx
+│   │   ├── FeaturesSection.tsx
+│   │   ├── HowItWorks.tsx
+│   │   ├── EmergencyBanner.tsx
+│   │   ├── Testimonials.tsx
+│   │   └── Footer.tsx
+│   ├── auth/                     ← Login / signup UI
+│   │   ├── AuthLayout.tsx        ← Left panel + right panel wrapper
+│   │   ├── AuthTabs.tsx          ← Sign In / Sign Up tab switcher
+│   │   ├── SignInForm.tsx        ← Sign in form (all roles)
+│   │   └── SignUpForm.tsx        ← Sign up form (role-specific fields)
+│   └── dashboard/
+│       └── DashboardClient.tsx   ← Dashboard UI (stats, actions, profile)
+│
+├── lib/                          ← LOGIC & DATA
+│   ├── roles.ts                  ← Config for all 8 roles (colors, features)
+│   ├── dummy-users.ts            ← Test accounts & demo data
+│   ├── auth-schemas.ts           ← Form validation rules (Zod)
+│   ├── utils.ts                  ← cn() helper for Tailwind classes
+│   └── supabase/
+│       ├── client.ts             ← Supabase browser client
+│       └── server.ts             ← Supabase server client
+│
+├── types/
+│   └── index.ts                  ← Shared TypeScript types
+│
+└── middleware.ts                 ← Auth guard (protects /dashboard routes)
 ```
 
 ---

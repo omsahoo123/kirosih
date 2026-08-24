@@ -15,21 +15,26 @@ export default function Navbar() {
   }, []);
 
   const links = [
-    { href: "#roles", label: "Who It's For" },
-    { href: "#features", label: "Features" },
-    { href: "#how", label: "How It Works" },
-    { href: "#testimonials", label: "Reviews" },
+    { href: "#roles",        label: "Who It's For" },
+    { href: "#features",     label: "Features"     },
+    { href: "#how",          label: "How It Works" },
+    { href: "#testimonials", label: "Reviews"      },
   ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-shadow duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-[9999] bg-white border-b border-gray-100 transition-shadow duration-300 ${
         scrolled ? "shadow-md" : ""
       }`}
     >
+      {/* Top bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 font-extrabold text-xl text-[#1A6B3C]">
+
+        <Link
+          href="/"
+          className="flex items-center gap-2 font-extrabold text-xl text-[#1A6B3C]"
+          onClick={() => setOpen(false)}
+        >
           <Heart className="w-6 h-6 fill-[#1A6B3C]" />
           Aarogya<span className="text-[#F4A832]">AI</span>
         </Link>
@@ -37,53 +42,54 @@ export default function Navbar() {
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
           {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm font-medium text-gray-500 hover:text-[#1A6B3C] transition-colors"
-            >
+            <a key={l.href} href={l.href}
+              className="text-sm font-medium text-gray-500 hover:text-[#1A6B3C] transition-colors">
               {l.label}
             </a>
           ))}
-          <a
-            href="#roles"
-            className="bg-[#1A6B3C] text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-[#2E8B57] transition-colors"
-          >
+          <a href="#roles"
+            className="bg-[#1A6B3C] text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-[#2E8B57] transition-colors">
             Get Started
           </a>
         </nav>
 
-        {/* Mobile toggle */}
+        {/* Hamburger — NO useEffect, pure toggle */}
         <button
-          className="md:hidden p-2 text-gray-600"
-          onClick={() => setOpen(!open)}
+          type="button"
+          style={{ touchAction: "manipulation" }}
+          className="md:hidden flex items-center justify-center w-12 h-12 rounded-xl text-gray-700 bg-gray-50 active:bg-gray-200"
+          onClick={() => setOpen((prev) => !prev)}
           aria-label="Toggle menu"
         >
-          {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
-      {/* Mobile drawer */}
+      {/* Drawer */}
       {open && (
-        <div className="md:hidden border-t border-gray-100 bg-white px-4 py-4 flex flex-col gap-4">
-          {links.map((l) => (
+        <nav className="md:hidden bg-white border-t border-gray-100 shadow-xl">
+          <div className="flex flex-col divide-y divide-gray-50 px-4">
+            {links.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="py-4 text-base font-semibold text-gray-800 hover:text-[#1A6B3C]"
+              >
+                {l.label}
+              </a>
+            ))}
+          </div>
+          <div className="px-4 py-4">
             <a
-              key={l.href}
-              href={l.href}
+              href="#roles"
               onClick={() => setOpen(false)}
-              className="text-sm font-medium text-gray-600 hover:text-[#1A6B3C]"
+              className="block bg-[#1A6B3C] text-white font-bold text-sm py-4 rounded-2xl text-center"
             >
-              {l.label}
+              Get Started Free →
             </a>
-          ))}
-          <a
-            href="#roles"
-            onClick={() => setOpen(false)}
-            className="bg-[#1A6B3C] text-white text-sm font-semibold px-5 py-2.5 rounded-full text-center"
-          >
-            Get Started
-          </a>
-        </div>
+          </div>
+        </nav>
       )}
     </header>
   );

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeOff, Mail, Lock, Loader2 } from "lucide-react";
-import { signInSchema, type SignInFormData } from "@/lib/validations/auth";
+import { signInSchema, type SignInFormData } from "@/lib/auth-schemas";
 // import { createClient } from "@/lib/supabase/client";
 import { findDummyUser } from "@/lib/dummy-users";
 import { useRouter } from "next/navigation";
