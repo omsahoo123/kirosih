@@ -33,8 +33,7 @@ export default function HowItWorks() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto relative">
-          {/* Connector line — desktop */}
-          <div className="hidden md:block absolute top-10 left-[22%] right-[22%] h-px bg-gray-200" />
+          
 
           {steps.map((s) => (
             <div key={s.num} className="text-center relative">

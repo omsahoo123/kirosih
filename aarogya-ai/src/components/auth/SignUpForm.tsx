@@ -378,15 +378,6 @@ export default function SignUpForm({ config, onSwitchToSignIn }: Props) {
         </button>
       </form>
 
-      <div className="flex items-center gap-3 my-5 text-xs text-gray-400">
-        <span className="flex-1 h-px bg-gray-100" />or sign up with<span className="flex-1 h-px bg-gray-100" />
-      </div>
-
-      <button className="w-full py-3 border border-gray-200 rounded-xl text-sm font-semibold text-[#1A1A2E] hover:bg-gray-50 flex items-center justify-center gap-2.5 transition-colors">
-        <img src="https://www.svgrepo.com/show/475656/google-color.svg" width={18} alt="" />
-        Sign up with Google
-      </button>
-
       <p className="text-center text-xs text-gray-400 mt-4 leading-relaxed">
         By signing up you agree to our{" "}
         <a href="#" style={{ color: ac }} className="font-semibold">Terms</a> and{" "}
