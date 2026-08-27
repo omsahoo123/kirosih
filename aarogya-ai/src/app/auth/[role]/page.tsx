@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { getRoleConfig } from "@/lib/roles";
-import AuthLayout from "@/components/auth/AuthLayout";
-import AuthTabs from "@/components/auth/AuthTabs";
+import AuthLayout from "@/components/auth/shared/AuthLayout";
+import AuthTabs from "@/components/auth/shared/AuthTabs";
 import type { Metadata } from "next";
 
 interface Props {
@@ -21,7 +21,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function AuthPage({ params }: Props) {
   const { role } = await params;
   const config = getRoleConfig(role);
-
   if (!config) notFound();
 
   return (
